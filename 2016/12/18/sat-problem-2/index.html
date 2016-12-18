@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>(二) conjunctive normal form, MiniSat | 所謂的弱就是一種罪</title>
+  <title>(二) conjunctive normal form, MiniSat | 學而時習之</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="conjunctive normal form, MiniSatSAT solver 是解決 SAT 問題的程式的統稱，這裡介紹一些先備知識，以及 miniSAT 這套開源的 SAT solver。
 一些名詞定義
@@ -11,7 +11,7 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
 <meta property="og:type" content="article">
 <meta property="og:title" content="(二) conjunctive normal form, MiniSat">
 <meta property="og:url" content="http://willyc20.github.io/2016/12/18/sat-problem-2/index.html">
-<meta property="og:site_name" content="所謂的弱就是一種罪">
+<meta property="og:site_name" content="學而時習之">
 <meta property="og:description" content="conjunctive normal form, MiniSatSAT solver 是解決 SAT 問題的程式的統稱，這裡介紹一些先備知識，以及 miniSAT 這套開源的 SAT solver。
 一些名詞定義
 variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a ∨ b ⊕ x)，a, b, x 就是它的 variable，當然 variab">
@@ -43,7 +43,7 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
     <div id="header-inner" class="inner">
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://willyc20.github.io"></form>
@@ -60,8 +60,12 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
     </div>
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">所謂的弱就是一種罪</a>
+        <a href="/" id="logo">學而時習之</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">學習是很有用的，沒用的是我</a>
+        </h2>
       
     </div>
   </div>
@@ -130,10 +134,10 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://willyc20.github.io/2016/12/18/sat-problem-2/" data-id="ciwuqy1uj0000eckn010z0zst" class="article-share-link">Share</a>
+      <a data-url="http://willyc20.github.io/2016/12/18/sat-problem-2/" data-id="ciwur7mrj0000z0kn4xxqxl3j" class="article-share-link">Share</a>
       
       
-        <a href="http://willyc20.github.io/2016/12/18/sat-problem-2/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://willyc20.github.io/2016/12/18/sat-problem-2/#disqus_thread" class="article-comment-link">留言</a>
       
       
     </footer>
@@ -168,7 +172,7 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">Content</strong>
+        <strong class="toc-title">文章目錄</strong>
         <div class="toc-widget-list">
               <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#conjunctive-normal-form-MiniSat"><span class="toc-number">1.</span> <span class="toc-text">conjunctive normal form, MiniSat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一些名詞定義"><span class="toc-number">1.1.</span> <span class="toc-text">一些名詞定義</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conjunctive-normal-form"><span class="toc-number">1.2.</span> <span class="toc-text">conjunctive normal form</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DIMACS-CNF-format"><span class="toc-number">1.3.</span> <span class="toc-text">DIMACS CNF format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MiniSat"><span class="toc-number">1.4.</span> <span class="toc-text">MiniSat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-number">1.5.</span> <span class="toc-text">reference</span></a></li></ol></li></ol>
           </div>
@@ -205,7 +209,7 @@ variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a 
       Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      Contact&nbsp;|&nbsp;willyc20bh3600@gmail.com
+      聯繫方式&nbsp;|&nbsp;willyc20bh3600@gmail.com
     </div>
   </div>
 </footer>
