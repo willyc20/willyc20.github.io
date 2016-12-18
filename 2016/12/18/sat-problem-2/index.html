@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>所謂的弱就是一種罪</title>
+  <title>(二) conjunctive normal form, MiniSat | 所謂的弱就是一種罪</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="所謂的弱就是一種罪">
-<meta property="og:url" content="http://willyc20.github.io/index.html">
+  <meta name="description" content="conjunctive normal form, MiniSatSAT solver 是解決 SAT 問題的程式的統稱，這裡介紹一些先備知識，以及 miniSAT 這套開源的 SAT solver。
+一些名詞定義
+variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a ∨ b ⊕ x)，a, b, x 就是它的 variable，當然 variab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(二) conjunctive normal form, MiniSat">
+<meta property="og:url" content="http://willyc20.github.io/2016/12/18/sat-problem-2/index.html">
 <meta property="og:site_name" content="所謂的弱就是一種罪">
+<meta property="og:description" content="conjunctive normal form, MiniSatSAT solver 是解決 SAT 問題的程式的統稱，這裡介紹一些先備知識，以及 miniSAT 這套開源的 SAT solver。
+一些名詞定義
+variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a ∨ b ⊕ x)，a, b, x 就是它的 variable，當然 variab">
+<meta property="og:updated_time" content="2016-12-18T14:24:49.018Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="所謂的弱就是一種罪">
+<meta name="twitter:title" content="(二) conjunctive normal form, MiniSat">
+<meta name="twitter:description" content="conjunctive normal form, MiniSatSAT solver 是解決 SAT 問題的程式的統稱，這裡介紹一些先備知識，以及 miniSAT 這套開源的 SAT solver。
+一些名詞定義
+variableboolean function 裡面用到的那些值就叫 variable，例如: (¬a ∨ b ⊕ x)，a, b, x 就是它的 variable，當然 variab">
   
   
     <link rel="icon" href="/favicon.png">
@@ -57,9 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-sat-problem-2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-sat-problem-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/18/sat-problem-2/" class="article-date">
   <time datetime="2016-12-17T16:00:00.000Z" itemprop="datePublished">2016-12-18</time>
@@ -76,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/18/sat-problem-2/">(二) conjunctive normal form, MiniSat</a>
+    <h1 class="article-title" itemprop="name">
+      (二) conjunctive normal form, MiniSat
     </h1>
   
 
@@ -131,114 +139,49 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-sat-problem-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/17/sat-problem-1/" class="article-date">
-  <time datetime="2016-12-16T16:00:00.000Z" itemprop="datePublished">2016-12-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/主題研究/">主題研究</a>►<a class="article-category-link" href="/categories/主題研究/SAT-Problem/">SAT Problem</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/17/sat-problem-1/">(一) SAT problem 介紹</a>
-    </h1>
+    <a href="/2016/12/17/sat-problem-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">(一) SAT problem 介紹</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="Boolean-Satisfiability-Problem"><a href="#Boolean-Satisfiability-Problem" class="headerlink" title="Boolean Satisfiability Problem"></a>Boolean Satisfiability Problem</h2><h3 id="什麼是-SAT"><a href="#什麼是-SAT" class="headerlink" title="什麼是 SAT?"></a>什麼是 SAT?</h3><p>Boolean satisfiability problem 簡稱 SAT，簡單說就是用來判斷一組給定的布林函數，是否可以找到一組變數賦值能使其為真。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># a, b, c 任一為 true 該式都為 true，也就是找的到解</span></div><div class="line"><span class="comment"># satisfiable</span></div><div class="line">(a ∨ b ∨ c)</div><div class="line">  </div><div class="line"><span class="comment"># a 不論為 true 或 false 該式都為 false，即找不到能使該式為 true 的 assign 方式</span></div><div class="line"><span class="comment"># unsatisfiable</span></div><div class="line">(a ∧ ¬a)</div></pre></td></tr></table></figure>
-<h3 id="SAT-的重要性"><a href="#SAT-的重要性" class="headerlink" title="SAT 的重要性"></a>SAT 的重要性</h3><ul>
-<li><p>SAT 是第一個 NP-Complete problem<br>在應用的角度只要知道 NP-Complete problem 很難，沒辦法有效率找到最佳解(但可能可以有效率的找到近似最佳解)，以及 NP-Complete problem 可以在多項式時間內互相轉換(就是說你可以拿一個 NP-Complete problem 來解另外一個)，這樣就夠了。</p>
-</li>
-<li><p>解 SAT 的方法發展的很好<br>SAT 做為最古老且知名的 NP-Complete problem，已經有許多演算法跟技巧被發明出來解它，目前最好的那些 SAT solver 可以解到上萬個變數，我們知道 NP-Complete problem 可以在多項式時間內互轉，而 SAT solver 的效率又不錯，那麼 SAT 自然是很有實用性的。</p>
-</li>
-</ul>
-<h3 id="SAT-的應用"><a href="#SAT-的應用" class="headerlink" title="SAT 的應用"></a>SAT 的應用</h3><p>SAT 被應用在如 EDA 領域的測試、驗證，AI 領域如自動定理證明 ，網路上還查的到很多，但一時間看不懂所以然的我就不列了，以下舉幾個例子。</p>
-<ul>
-<li>Circuit satisfiability problem<br>給出一個電路，是否有 input 能讓 output 為 true</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 考慮下列 AND gate</span></div><div class="line">C = A . B</div><div class="line"><span class="comment"># 有對應如下的 boolean function</span></div><div class="line">(¬a ∨ ¬b ∨ c)∧(a ∨ ¬c)∧(b ∨ ¬c)</div><div class="line"><span class="comment"># 思考拼湊一下可以發現能讓它 satisfiable 的值就是 AND gate output true 的值</span></div></pre></td></tr></table></figure>
-<p>如果運用這種方法，就可以堆積出複雜電路的 boolean function，可以測試一個電路能不能 output true，也就是說能知道它會不會是無用的電路(可以化簡)。</p>
-<p>這種方法叫做 Tseitin transformation，有興趣可參考 wiki:<a href="https://en.wikipedia.org/wiki/Tseytin_transformation" target="_blank" rel="external">https://en.wikipedia.org/wiki/Tseytin_transformation</a></p>
-<ul>
-<li>四色問題<br>如果地圖上相鄰的兩個區域不能畫相同的顏色，那不管這張地圖多複雜，最少都可以用四種顏色畫出它。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 考慮區域1跟2相鄰</span></div><div class="line"></div><div class="line"><span class="comment"># 下列四個變數代表區域1能被畫的顏色</span></div><div class="line">R1 B1 G1 Y1</div><div class="line"></div><div class="line"><span class="comment"># R1 B1 G1 Y1 只能有一個為 true</span></div><div class="line">(¬R1 ∨ ¬B1)∧</div><div class="line">(¬R1 ∨ ¬G1)∧</div><div class="line">(¬R1 ∨ ¬Y1)∧</div><div class="line">(¬B1 ∨ ¬G1)∧</div><div class="line">(¬B1 ∨ ¬Y1)∧</div><div class="line">(¬G1 ∨ ¬Y1)</div><div class="line"></div><div class="line"><span class="comment"># 區域2相同</span></div><div class="line">R2 B2 G2 Y2</div><div class="line">(¬R2 ∨ ¬B2)∧</div><div class="line">(¬R2 ∨ ¬G2)∧</div><div class="line">(¬R2 ∨ ¬Y2)∧</div><div class="line">(¬B2 ∨ ¬G2)∧</div><div class="line">(¬B2 ∨ ¬Y2)∧</div><div class="line">(¬G2 ∨ ¬Y2)</div><div class="line"></div><div class="line"><span class="comment"># 區域1跟區域2不能同顏色</span></div><div class="line">(¬R1 ∨ ¬R2)∧(¬B1 ∨ ¬B2)∧(¬G1 ∨ ¬G2)∧(¬Y1 ∨ ¬Y2)</div><div class="line"></div><div class="line"><span class="comment"># 將全部 AND 起來，就能得到一個 boolean function，</span></div><div class="line"><span class="comment"># 一定找的到 true 的賦值方式，而且區域1,2不同色，就</span></div><div class="line"><span class="comment"># 算區域更多也不會用超過四種顏色。</span></div></pre></td></tr></table></figure>
-<p>不過我們知道一張地圖的區域最少能用幾種顏色畫，讓相鄰的區域不同顏色，這樣的事情要幹嘛? 當然是有用處的。</p>
-<p>例如很多地方都蓋了基地台，但只要是相鄰的基地台使用相同的頻率，就會相互干擾導致收訊不良。因此對應到四色問題，我們知道最少用四種頻率的基地台就能解決干擾了。</p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p>一個介紹 SAT 的英文文章<br><a href="http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html" target="_blank" rel="external">http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://willyc20.github.io/2016/12/17/sat-problem-1/" data-id="ciwuqy1uj0001eckn31teglmt" class="article-share-link">Share</a>
-      
-      
-        <a href="http://willyc20.github.io/2016/12/17/sat-problem-1/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
 
 
-  
-
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
            
     <aside id="sidebar">
   
     
-  
+    <div class="widget-wrap">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title categories">Categories</h3>
-    <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/主題研究/">主題研究</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/主題研究/SAT-Problem/">SAT Problem</a><span class="category-list-count">2</span></li></ul></li></ul>
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#conjunctive-normal-form-MiniSat"><span class="toc-number">1.</span> <span class="toc-text">conjunctive normal form, MiniSat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一些名詞定義"><span class="toc-number">1.1.</span> <span class="toc-text">一些名詞定義</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conjunctive-normal-form"><span class="toc-number">1.2.</span> <span class="toc-text">conjunctive normal form</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DIMACS-CNF-format"><span class="toc-number">1.3.</span> <span class="toc-text">DIMACS CNF format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MiniSat"><span class="toc-number">1.4.</span> <span class="toc-text">MiniSat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-number">1.5.</span> <span class="toc-text">reference</span></a></li></ol></li></ol>
+          </div>
+      </div>
     </div>
-  </div>
 
+  
+    
 
   
     
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/12/18/sat-problem-2/">(二) conjunctive normal form, MiniSat</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/17/sat-problem-1/">(一) SAT problem 介紹</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
   
     
 
@@ -249,13 +192,6 @@
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title archive">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
 
   
 </aside>
@@ -285,11 +221,13 @@
 <script>
   var disqus_shortname = 'willyc20';
   
+  var disqus_url = 'http://willyc20.github.io/2016/12/18/sat-problem-2/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

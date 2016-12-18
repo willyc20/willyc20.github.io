@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="所謂的弱就是一種罪">
 <meta property="og:description" content="Boolean Satisfiability Problem什麼是 SAT?Boolean satisfiability problem 簡稱 SAT，簡單說就是用來判斷一組給定的布林函數，是否可以找到一組變數賦值能使其為真。
 1234567# a, b, c 任一為 true 該式都為 true，也就是找的到解# satisfiable(a ∨ b ∨ c)  # a 不論為 true 或 fa">
-<meta property="og:updated_time" content="2016-12-17T15:28:33.456Z">
+<meta property="og:updated_time" content="2016-12-18T14:11:22.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(一) SAT problem 介紹">
 <meta name="twitter:description" content="Boolean Satisfiability Problem什麼是 SAT?Boolean satisfiability problem 簡稱 SAT，簡單說就是用來判斷一組給定的布林函數，是否可以找到一組變數賦值能使其為真。
@@ -113,12 +113,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 考慮區域1跟2相鄰</span></div><div class="line"></div><div class="line"><span class="comment"># 下列四個變數代表區域1能被畫的顏色</span></div><div class="line">R1 B1 G1 Y1</div><div class="line"></div><div class="line"><span class="comment"># R1 B1 G1 Y1 只能有一個為 true</span></div><div class="line">(¬R1 ∨ ¬B1)∧</div><div class="line">(¬R1 ∨ ¬G1)∧</div><div class="line">(¬R1 ∨ ¬Y1)∧</div><div class="line">(¬B1 ∨ ¬G1)∧</div><div class="line">(¬B1 ∨ ¬Y1)∧</div><div class="line">(¬G1 ∨ ¬Y1)</div><div class="line"></div><div class="line"><span class="comment"># 區域2相同</span></div><div class="line">R2 B2 G2 Y2</div><div class="line">(¬R2 ∨ ¬B2)∧</div><div class="line">(¬R2 ∨ ¬G2)∧</div><div class="line">(¬R2 ∨ ¬Y2)∧</div><div class="line">(¬B2 ∨ ¬G2)∧</div><div class="line">(¬B2 ∨ ¬Y2)∧</div><div class="line">(¬G2 ∨ ¬Y2)</div><div class="line"></div><div class="line"><span class="comment"># 區域1跟區域2不能同顏色</span></div><div class="line">(¬R1 ∨ ¬R2)∧(¬B1 ∨ ¬B2)∧(¬G1 ∨ ¬G2)∧(¬Y1 ∨ ¬Y2)</div><div class="line"></div><div class="line"><span class="comment"># 將全部 AND 起來，就能得到一個 boolean function，</span></div><div class="line"><span class="comment"># 一定找的到 true 的賦值方式，而且區域1,2不同色，就</span></div><div class="line"><span class="comment"># 算區域更多也不會用超過四種顏色。</span></div></pre></td></tr></table></figure>
 <p>不過我們知道一張地圖的區域最少能用幾種顏色畫，讓相鄰的區域不同顏色，這樣的事情要幹嘛? 當然是有用處的。</p>
 <p>例如很多地方都蓋了基地台，但只要是相鄰的基地台使用相同的頻率，就會相互干擾導致收訊不良。因此對應到四色問題，我們知道最少用四種頻率的基地台就能解決干擾了。</p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html" target="_blank" rel="external">http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html</a></p>
+<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p>一個介紹 SAT 的英文文章<br><a href="http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html" target="_blank" rel="external">http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://willyc20.github.io/2016/12/17/sat-problem-1/" data-id="ciwtdpkyg00007oknqwjcbdio" class="article-share-link">Share</a>
+      <a data-url="http://willyc20.github.io/2016/12/17/sat-problem-1/" data-id="ciwuqy1uj0001eckn31teglmt" class="article-share-link">Share</a>
       
       
         <a href="http://willyc20.github.io/2016/12/17/sat-problem-1/#disqus_thread" class="article-comment-link">Comments</a>
@@ -128,6 +128,20 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2016/12/18/sat-problem-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (二) conjunctive normal form, MiniSat
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
